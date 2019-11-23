@@ -10,7 +10,8 @@ import UIKit
 
 class ManualViewController: UIViewController {
 
-    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var inputNameField: UITextField!
+    @IBOutlet weak var inputDateField: UITextField!
     
     private var datePicker: UIDatePicker?
     var foodName: String = ""
@@ -19,6 +20,10 @@ class ManualViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        inputNameField.attributedPlaceholder = NSAttributedString(string:"Enter Product Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(red: 107/255, green: 135/255, blue: 195/255, alpha: 1)])
+        inputDateField.attributedPlaceholder = NSAttributedString(string:"Enter Expiry Date", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(red: 107/255, green: 135/255, blue: 195/255, alpha: 1)])
+        
+        
         datePicker = UIDatePicker()
         datePicker?.datePickerMode = .date
         datePicker?.addTarget(self, action:  #selector(ManualViewController.dateChanged(datePicker:)), for: .valueChanged)
@@ -26,7 +31,7 @@ class ManualViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ManualViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         
-        inputTextField.inputView = datePicker
+        inputDateField.inputView = datePicker
     }
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer ) {
         view.endEditing(true)
@@ -35,13 +40,16 @@ class ManualViewController: UIViewController {
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        inputTextField.text = dateFormatter.string(from: datePicker.date)
+        inputDateField.text = dateFormatter.string(from: datePicker.date)
         expiryDate = datePicker.date
     }
         
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        foodName = inputNameField.text!
         newFood = Food(name: foodName, expiryDate: expiryDate, storageInfo: "")
+        items.append(newFood)
+        print(items)
     }
 }
 
