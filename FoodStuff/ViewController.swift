@@ -86,12 +86,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         scanItemView.layer.cornerRadius = 20
         scanItemView.clipsToBounds = true
         
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
-            DispatchQueue.main.async {
-                self.collectionview.reloadData()
-            }
-            
-        }
+//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
+//            DispatchQueue.main.async {
+//                self.collectionview.reloadData()
+//            }
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -173,6 +172,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             cell.daysToExpire.text = "\(timeToExpire) days to expiry"
         } else {
             cell.backgroundColorIndicatorView.backgroundColor = UIColor(red: 70/255, green: 80/255, blue: 90/255, alpha: 1)
+            cell.daysToExpire.text = "\(timeToExpire) days to expiry"
         }
         cell.featureImageView.image = UIImage(named: items[indexPath.row].name.lowercased()) ?? UIImage()
         
