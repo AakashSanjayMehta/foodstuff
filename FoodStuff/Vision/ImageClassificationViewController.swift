@@ -11,38 +11,14 @@ import CoreML
 import Vision
 import ImageIO
 
-class ImageClassificationViewController: UIViewController {
-    
-    // MARK: - IBOutlets
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var classificationLabel: UILabel!
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
     // MARK: - Image Classification
     
-    lazy var classificationRequest: VNCoreMLRequest = {
-        do {
-            /*
-             Use the Swift class `MobileNet` Core ML generates from the model.
-             To use a different Core ML classifier model, add it to the project
-             and replace `MobileNet` with that model's generated Swift class.
-             */
-            let model = try VNCoreMLModel(for: Fruit().model)
-            
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processClassifications(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .centerCrop
-            return request
-        } catch {
-            fatalError("Failed to loale Vision ML model: \(error)")
-        }
-    }()
-    
     /// - Tag: PerformRequests
     func updateClassifications(for image: UIImage) {
-        classificationLabel.text = "Classifying..."
+        print("Classifying...")
         
         let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))!
         guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
@@ -67,14 +43,14 @@ class ImageClassificationViewController: UIViewController {
     func processClassifications(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             guard let results = request.results else {
-                self.classificationLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
+                print("Unable to classify image.\n\(error!.localizedDescription)")
                 return
             }
             // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
             let classifications = results as! [VNClassificationObservation]
             
             if classifications.isEmpty {
-                self.classificationLabel.text = "Nothing recognized."
+                print("Nothing recognized.")
             } else {
                 // Display top classifications ranked by confidence in the UI.
                 let topClassifications = classifications.prefix(2)
@@ -82,33 +58,12 @@ class ImageClassificationViewController: UIViewController {
                     // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
                     return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
                 }
-                self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
+                print("Classification:\n" + descriptions.joined(separator: "\n"))
             }
         }
     }
     
     // MARK: - Photo Actions
-    
-    @IBAction func takePicture(_ sender: Any) {
-        // Show options for the source picker only if the camera is available.
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            presentPhotoPicker(sourceType: .photoLibrary)
-            return
-        }
-        
-        let photoSourcePicker = UIAlertController()
-        let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { [unowned self] _ in
-            self.presentPhotoPicker(sourceType: .camera)
-        }
-        let choosePhoto = UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
-            self.presentPhotoPicker(sourceType: .photoLibrary)
-        }
-        
-        photoSourcePicker.addAction(takePhoto)
-        photoSourcePicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(photoSourcePicker, animated: true)
-    }
     
     func presentPhotoPicker(sourceType: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
@@ -118,11 +73,6 @@ class ImageClassificationViewController: UIViewController {
         
     }
     
-    
-}
-
-@available(iOS 12.0, *)
-extension ImageClassificationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // MARK: - Handling Image Picker Selection
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -130,7 +80,7 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
         picker.dismiss(animated: true)
         
         let image = info[.originalImage] as! UIImage
-        imageView.image = image
+//        imageView.image = image
         updateClassifications(for: image)
     }
 }

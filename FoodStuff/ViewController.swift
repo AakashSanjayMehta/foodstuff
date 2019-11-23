@@ -8,6 +8,9 @@
 
 import UIKit
 import FirebaseDatabase
+import CoreML
+import ImageIO
+import Vision
 
 var items: [Food] = []
 
@@ -17,6 +20,26 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var selectedItem: Food!
     
     @IBOutlet weak var collectionview: UICollectionView!
+    
+    // Classification
+    lazy var classificationRequest: VNCoreMLRequest = {
+        do {
+            /*
+             Use the Swift class `MobileNet` Core ML generates from the model.
+             To use a different Core ML classifier model, add it to the project
+             and replace `MobileNet` with that model's generated Swift class.
+             */
+            let model = try VNCoreMLModel(for: Fruit().model)
+            
+            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+                self?.processClassifications(for: request, error: error)
+            })
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+        } catch {
+            fatalError("Failed to loale Vision ML model: \(error)")
+        }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +77,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     @IBAction func openVision(_ sender: Any) {
         // @AAKASH
+        // Show options for the source picker only if the camera is available.
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            presentPhotoPicker(sourceType: .photoLibrary)
+            return
+        }
+        self.presentPhotoPicker(sourceType: .camera)
     }
     
     // MARK: - Collection View
