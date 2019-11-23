@@ -10,7 +10,11 @@
 		25EBB12C2388FCA8000AA427 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EBB12B2388FCA8000AA427 /* Food.swift */; };
 		32D4B5F62388FB45006FE823 /* Vision.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5F52388FB45006FE823 /* Vision.storyboard */; };
 		32D4B5F82388FB53006FE823 /* Manual.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5F72388FB53006FE823 /* Manual.storyboard */; };
-		5E7B8DAA2388D9DB00389BFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E7B8DA92388D9DB00389BFE /* GoogleService-Info.plist */; };
+		32D4B5FA238907E0006FE823 /* FoodsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B5F9238907E0006FE823 /* FoodsCollectionViewCell.swift */; };
+		32D4B5FC23890998006FE823 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5FB23890998006FE823 /* GoogleService-Info.plist */; };
+		32D4B5FE238916D4006FE823 /* ChickenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B5FD238916D4006FE823 /* ChickenViewController.swift */; };
+		32D4B60023891AC4006FE823 /* data.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5FF23891AC4006FE823 /* data.tsv */; };
+		32D4B60223891B08006FE823 /* TSV Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B60123891B08006FE823 /* TSV Parser.swift */; };
 		5EC357332388D78F00FD3CCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC357322388D78F00FD3CCB /* AppDelegate.swift */; };
 		5EC357352388D78F00FD3CCB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC357342388D78F00FD3CCB /* SceneDelegate.swift */; };
 		5EC357372388D78F00FD3CCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC357362388D78F00FD3CCB /* ViewController.swift */; };
@@ -47,9 +51,13 @@
 		269692C0B4D39DC6592FB3CA /* Pods-FoodStuff-FoodStuffUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuff-FoodStuffUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodStuff-FoodStuffUITests/Pods-FoodStuff-FoodStuffUITests.release.xcconfig"; sourceTree = "<group>"; };
 		32D4B5F52388FB45006FE823 /* Vision.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vision.storyboard; sourceTree = "<group>"; };
 		32D4B5F72388FB53006FE823 /* Manual.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manual.storyboard; sourceTree = "<group>"; };
+		32D4B5F9238907E0006FE823 /* FoodsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsCollectionViewCell.swift; sourceTree = "<group>"; };
+		32D4B5FB23890998006FE823 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		32D4B5FD238916D4006FE823 /* ChickenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickenViewController.swift; sourceTree = "<group>"; };
+		32D4B5FF23891AC4006FE823 /* data.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.tsv; sourceTree = "<group>"; };
+		32D4B60123891B08006FE823 /* TSV Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TSV Parser.swift"; sourceTree = "<group>"; };
 		4A582AD34F22F8C5C2F72F85 /* Pods-FoodStuff-FoodStuffUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuff-FoodStuffUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodStuff-FoodStuffUITests/Pods-FoodStuff-FoodStuffUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		52D45F10C0C3F1D8E0919919 /* Pods-FoodStuffTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuffTests.release.xcconfig"; path = "Target Support Files/Pods-FoodStuffTests/Pods-FoodStuffTests.release.xcconfig"; sourceTree = "<group>"; };
-		5E7B8DA92388D9DB00389BFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5EC3572F2388D78F00FD3CCB /* FoodStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC357322388D78F00FD3CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC357342388D78F00FD3CCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,12 +152,16 @@
 				5EC357342388D78F00FD3CCB /* SceneDelegate.swift */,
 				5EC357362388D78F00FD3CCB /* ViewController.swift */,
 				5EC357382388D78F00FD3CCB /* Main.storyboard */,
+				32D4B5FD238916D4006FE823 /* ChickenViewController.swift */,
+				32D4B5F9238907E0006FE823 /* FoodsCollectionViewCell.swift */,
 				32D4B5F52388FB45006FE823 /* Vision.storyboard */,
 				32D4B5F72388FB53006FE823 /* Manual.storyboard */,
+				32D4B60123891B08006FE823 /* TSV Parser.swift */,
 				5EC3573E2388D79000FD3CCB /* Assets.xcassets */,
 				5EC357402388D79000FD3CCB /* LaunchScreen.storyboard */,
+				32D4B5FB23890998006FE823 /* GoogleService-Info.plist */,
+				32D4B5FF23891AC4006FE823 /* data.tsv */,
 				5EC357432388D79000FD3CCB /* Info.plist */,
-				5E7B8DA92388D9DB00389BFE /* GoogleService-Info.plist */,
 				5EC3573B2388D78F00FD3CCB /* FoodStuff.xcdatamodeld */,
 			);
 			path = FoodStuff;
@@ -292,8 +304,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D4B5FC23890998006FE823 /* GoogleService-Info.plist in Resources */,
+				32D4B60023891AC4006FE823 /* data.tsv in Resources */,
 				5EC357422388D79000FD3CCB /* LaunchScreen.storyboard in Resources */,
-				5E7B8DAA2388D9DB00389BFE /* GoogleService-Info.plist in Resources */,
 				5EC3573F2388D79000FD3CCB /* Assets.xcassets in Resources */,
 				5EC3573A2388D78F00FD3CCB /* Main.storyboard in Resources */,
 				32D4B5F82388FB53006FE823 /* Manual.storyboard in Resources */,
@@ -429,6 +442,9 @@
 				5EC357372388D78F00FD3CCB /* ViewController.swift in Sources */,
 				5EC357332388D78F00FD3CCB /* AppDelegate.swift in Sources */,
 				5EC3573D2388D78F00FD3CCB /* FoodStuff.xcdatamodeld in Sources */,
+				32D4B5FE238916D4006FE823 /* ChickenViewController.swift in Sources */,
+				32D4B60223891B08006FE823 /* TSV Parser.swift in Sources */,
+				32D4B5FA238907E0006FE823 /* FoodsCollectionViewCell.swift in Sources */,
 				5EC357352388D78F00FD3CCB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
