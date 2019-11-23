@@ -53,12 +53,19 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 print("Nothing recognized.")
             } else {
                 // Display top classifications ranked by confidence in the UI.
-                let topClassifications = classifications.prefix(2)
-                let descriptions = topClassifications.map { classification in
+                let bestClassification = classifications.prefix(1)
+                let descriptions = bestClassification.map { classification in
                     // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-                    return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
+//                    return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
+                    return String(classification.identifier)
                 }
                 print("Classification:\n" + descriptions.joined(separator: "\n"))
+                print(Parser().getData()[descriptions[0]]?.storage)
+                print(items)
+                print(date + (Parser().getData()[descriptions[0]]?.durationFridge)!)
+                //save data
+                items.append(Food(name: descriptions[0], expiryDate: date + (Parser().getData()[descriptions[0]]?.durationFridge)!, storageInfo: Parser().getData()[descriptions[0]]!.storage))
+                
             }
         }
     }

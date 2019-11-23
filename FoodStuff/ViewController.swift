@@ -13,11 +13,13 @@ import ImageIO
 import Vision
 
 var items: [Food] = []
+var date: Date!
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var ref: DatabaseReference!
     var selectedItem: Food!
+    
     
     @IBOutlet weak var collectionview: UICollectionView!
     
@@ -50,8 +52,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             let changeddatenum: String = snapshot.value as! String
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/yyyy"
-            let date: Date = dateFormatter.date(from: changeddatenum)!
-            print(date)
+            date = dateFormatter.date(from: changeddatenum)!
+            print("new date is \(date)")
+            self.collectionview.reloadData()
         })
         
         createDummyData()
