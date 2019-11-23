@@ -79,7 +79,11 @@ DEPENDENCIES:
   - Firebase/Database
 
 SPEC REPOS:
+<<<<<<< HEAD
+  https://github.com/CocoaPods/Specs.git:
+=======
   https://github.com/cocoapods/specs.git:
+>>>>>>> master
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
