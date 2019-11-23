@@ -13,7 +13,7 @@ import ImageIO
 import Vision
 
 var items: [Food] = []
-var date: Date!
+var date = Date()
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -161,16 +161,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.widthConstraint.constant = (UIScreen.main.bounds.width - 60) / 2
         cell.foodNameLabel.text = items[indexPath.row].name
         
-        let timeToExpire = round((item.expiryDate.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24)
-        if timeToExpire == 0 {
+        let expiry = items[indexPath.row].expiryDate
+        
+        let timeToExpire = Int(round((expiry.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24))
+        
+        if timeToExpire <= 0 {
             cell.backgroundColorIndicatorView.backgroundColor = .systemRed
             cell.daysToExpire.text = "EXPIRED"
         } else if timeToExpire <= 7 {
             cell.backgroundColorIndicatorView.backgroundColor = .systemYellow
             cell.daysToExpire.text = "\(timeToExpire) days to expiry"
         } else {
-            cell.backgroundColorIndicatorView.backgroundColor = UIColor(red: 57/255, green: 62/255, blue: 76/255, alpha: 1)
-            cell.daysToExpire.text = "\(timeToExpire) days to expiry"
+            cell.backgroundColorIndicatorView.backgroundColor = UIColor(red: 70/255, green: 80/255, blue: 90/255, alpha: 1)
         }
         cell.featureImageView.image = UIImage(named: items[indexPath.row].name.lowercased()) ?? UIImage()
         
