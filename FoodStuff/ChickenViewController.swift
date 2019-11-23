@@ -25,7 +25,7 @@ class ChickenViewController: UIViewController {
         recommendationsLabel.text = item.storageInfo
         
         #warning("make sure the if else is correct")
-        let timeToExpire = Int(round(item.expiryDate.timeIntervalSinceNow / 60 / 60 / 24))
+        let timeToExpire = round((item.expiryDate.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24)
         if timeToExpire == 0 {
             timeToExpiryLabel.text = "EXPIRED"
         } else if timeToExpire <= 7 {

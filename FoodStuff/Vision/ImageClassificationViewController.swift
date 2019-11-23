@@ -62,9 +62,9 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 print("Classification:\n" + descriptions.joined(separator: "\n"))
                 print(Parser().getData()[descriptions[0]]?.storage)
                 print(items)
-                print(self.date + (Parser().getData()[descriptions[0]]?.durationFridge)!)
+                print(date + (Parser().getData()[descriptions[0]]?.durationFridge)!)
                 //save data
-                items.append(Food(name: descriptions[0], expiryDate: self.date + (Parser().getData()[descriptions[0]]?.durationFridge)!, storageInfo: Parser().getData()[descriptions[0]]!.storage))
+                items.append(Food(name: descriptions[0], expiryDate: date + (Parser().getData()[descriptions[0]]?.durationFridge)!, storageInfo: Parser().getData()[descriptions[0]]!.storage))
                 
             }
         }
