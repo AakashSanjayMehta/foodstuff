@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25518464238909C2001E47E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 25518463238909C2001E47E2 /* GoogleService-Info.plist */; };
 		256A7EED2389026F005A30ED /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A7EEC2389026F005A30ED /* ManualViewController.swift */; };
 		25EBB12C2388FCA8000AA427 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EBB12B2388FCA8000AA427 /* Food.swift */; };
 		32D4B5F62388FB45006FE823 /* Vision.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5F52388FB45006FE823 /* Vision.storyboard */; };
@@ -51,7 +50,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		25518463238909C2001E47E2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		256A7EEC2389026F005A30ED /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
 		25EBB12B2388FCA8000AA427 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		269692C0B4D39DC6592FB3CA /* Pods-FoodStuff-FoodStuffUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuff-FoodStuffUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodStuff-FoodStuffUITests/Pods-FoodStuff-FoodStuffUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				256A7EEC2389026F005A30ED /* ManualViewController.swift */,
-				32D4B5F72388FB53006FE823 /* Manual.storyboard */,
 				5E996F3B2389340A003887ED /* Vision */,
 				5E0B2C942389075A00ED4F81 /* Fruit.mlmodel */,
 				25EBB12B2388FCA8000AA427 /* Food.swift */,
