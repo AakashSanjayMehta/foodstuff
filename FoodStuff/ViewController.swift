@@ -94,13 +94,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: - UI Customisation
     func customiseSearchBar() {
-//        searchBar.setSearchTextColor(.white)
-        
-        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.green]
-        let attributedPlaceholder: NSAttributedString = NSAttributedString(string: "Search", attributes: placeholderAttributes)
-        
-        let textFieldPlaceHolder = searchBar.value(forKey: "searchField") as? UITextField
-        textFieldPlaceHolder?.attributedPlaceholder = attributedPlaceholder
+        searchBar.set(textColor: .white)
+        searchBar.setTextField(color: UIColor(red: 60/255, green: 64/255, blue: 78/255, alpha: 1))
+        searchBar.setPlaceholder(textColor: .init(white: 1, alpha: 0.6))
+        searchBar.setSearchImage(color: .white)
     }
     
     
@@ -186,9 +183,88 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 }
 
 extension UISearchBar {
-    public func setSearchTextColor(_ colour: UIColor) {
-        let clrChange = subviews.flatMap { $0.subviews }
-        guard let sc = (clrChange.filter { $0 is UITextField }).first as? UITextField else { return }
-        sc.textColor = colour
+
+    func getTextField() -> UITextField? { return value(forKey: "searchField") as? UITextField }
+    func set(textColor: UIColor) { if let textField = getTextField() { textField.textColor = textColor } }
+    func setPlaceholder(textColor: UIColor) { getTextField()?.setPlaceholder(textColor: textColor) }
+    func setClearButton(color: UIColor) { getTextField()?.setClearButton(color: color) }
+
+    func setTextField(color: UIColor) {
+        guard let textField = getTextField() else { return }
+        switch searchBarStyle {
+        case .minimal:
+            textField.layer.backgroundColor = color.cgColor
+            textField.layer.cornerRadius = 6
+        case .prominent, .default: textField.backgroundColor = color
+        @unknown default: break
+        }
     }
+
+    func setSearchImage(color: UIColor) {
+        guard let imageView = getTextField()?.leftView as? UIImageView else { return }
+        imageView.tintColor = color
+        imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+    }
+}
+
+private extension UITextField {
+
+    private class Label: UILabel {
+        private var _textColor = UIColor.lightGray
+        override var textColor: UIColor! {
+            set { super.textColor = _textColor }
+            get { return _textColor }
+        }
+
+        init(label: UILabel, textColor: UIColor = .lightGray) {
+            _textColor = textColor
+            super.init(frame: label.frame)
+            self.text = label.text
+            self.font = label.font
+        }
+
+        required init?(coder: NSCoder) { super.init(coder: coder) }
+    }
+
+
+    private class ClearButtonImage {
+        static private var _image: UIImage?
+        static private var semaphore = DispatchSemaphore(value: 1)
+        static func getImage(closure: @escaping (UIImage?)->()) {
+            DispatchQueue.global(qos: .userInteractive).async {
+                semaphore.wait()
+                DispatchQueue.main.async {
+                    if let image = _image { closure(image); semaphore.signal(); return }
+                    guard let window = UIApplication.shared.windows.first else { semaphore.signal(); return }
+                    let searchBar = UISearchBar(frame: CGRect(x: 0, y: -200, width: UIScreen.main.bounds.width, height: 44))
+                    window.rootViewController?.view.addSubview(searchBar)
+                    searchBar.text = "txt"
+                    searchBar.layoutIfNeeded()
+                    _image = searchBar.getTextField()?.getClearButton()?.image(for: .normal)
+                    closure(_image)
+                    searchBar.removeFromSuperview()
+                    semaphore.signal()
+                }
+            }
+        }
+    }
+
+    func setClearButton(color: UIColor) {
+        ClearButtonImage.getImage { [weak self] image in
+            guard   let image = image,
+                let button = self?.getClearButton() else { return }
+            button.imageView?.tintColor = color
+            button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
+        }
+    }
+
+    var placeholderLabel: UILabel? { return value(forKey: "placeholderLabel") as? UILabel }
+
+    func setPlaceholder(textColor: UIColor) {
+        guard let placeholderLabel = placeholderLabel else { return }
+        let label = Label(label: placeholderLabel, textColor: textColor)
+        setValue(label, forKey: "placeholderLabel")
+    }
+
+    func getClearButton() -> UIButton? { return value(forKey: "clearButton") as? UIButton }
 }
