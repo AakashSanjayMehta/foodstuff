@@ -20,11 +20,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var ref: DatabaseReference!
     var selectedItem: Food!
     
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tappedScreen: UITapGestureRecognizer!
     @IBOutlet weak var buttonsStackView: UIStackView!
-
+    
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var manuallyTypeView: UIView!
     @IBOutlet weak var scanItemView: UIView!
@@ -61,8 +61,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             date = dateFormatter.date(from: changeddatenum)!
             print("new date is \(date)")
             
-            self.collectionview.reloadData()
-            
+            DispatchQueue.main.async {
+                self.collectionview.reloadData()
+            }
         })
         
         createDummyData()
@@ -120,6 +121,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             presentPhotoPicker(sourceType: .photoLibrary)
             return
         }
+        dismissPopUp(UILabel())
         self.presentPhotoPicker(sourceType: .camera)
     }
     
@@ -159,7 +161,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cell.widthConstraint.constant = (UIScreen.main.bounds.width - 60) / 2
         cell.foodNameLabel.text = items[indexPath.row].name
         
-        let timeToExpire = Int(round(items[indexPath.row].expiryDate.timeIntervalSinceNow / 60 / 60 / 24))
+        let timeToExpire = round((item.expiryDate.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24)
         if timeToExpire == 0 {
             cell.backgroundColorIndicatorView.backgroundColor = .systemRed
             cell.daysToExpire.text = "EXPIRED"
@@ -181,7 +183,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -193,6 +195,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if let dest = segue.destination as? ManualViewController {
             dest.onDismiss = {
                 self.collectionview.reloadData()
+                self.dismissPopUp(UILabel())
             }
         }
     }
@@ -200,12 +203,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
 }
 
 extension UISearchBar {
-
+    
     func getTextField() -> UITextField? { return value(forKey: "searchField") as? UITextField }
     func set(textColor: UIColor) { if let textField = getTextField() { textField.textColor = textColor } }
     func setPlaceholder(textColor: UIColor) { getTextField()?.setPlaceholder(textColor: textColor) }
     func setClearButton(color: UIColor) { getTextField()?.setClearButton(color: color) }
-
+    
     func setTextField(color: UIColor) {
         guard let textField = getTextField() else { return }
         switch searchBarStyle {
@@ -216,7 +219,7 @@ extension UISearchBar {
         @unknown default: break
         }
     }
-
+    
     func setSearchImage(color: UIColor) {
         guard let imageView = getTextField()?.leftView as? UIImageView else { return }
         imageView.tintColor = color
@@ -225,25 +228,25 @@ extension UISearchBar {
 }
 
 private extension UITextField {
-
+    
     private class Label: UILabel {
         private var _textColor = UIColor.lightGray
         override var textColor: UIColor! {
             set { super.textColor = _textColor }
             get { return _textColor }
         }
-
+        
         init(label: UILabel, textColor: UIColor = .lightGray) {
             _textColor = textColor
             super.init(frame: label.frame)
             self.text = label.text
             self.font = label.font
         }
-
+        
         required init?(coder: NSCoder) { super.init(coder: coder) }
     }
-
-
+    
+    
     private class ClearButtonImage {
         static private var _image: UIImage?
         static private var semaphore = DispatchSemaphore(value: 1)
@@ -265,7 +268,7 @@ private extension UITextField {
             }
         }
     }
-
+    
     func setClearButton(color: UIColor) {
         ClearButtonImage.getImage { [weak self] image in
             guard   let image = image,
@@ -274,14 +277,14 @@ private extension UITextField {
             button.setImage(image.withRenderingMode(.alwaysTemplate), for: .normal)
         }
     }
-
+    
     var placeholderLabel: UILabel? { return value(forKey: "placeholderLabel") as? UILabel }
-
+    
     func setPlaceholder(textColor: UIColor) {
         guard let placeholderLabel = placeholderLabel else { return }
         let label = Label(label: placeholderLabel, textColor: textColor)
         setValue(label, forKey: "placeholderLabel")
     }
-
+    
     func getClearButton() -> UIButton? { return value(forKey: "clearButton") as? UIButton }
 }
