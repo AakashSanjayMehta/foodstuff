@@ -7,6 +7,7 @@ target 'FoodStuff' do
 
   # Pods for FoodStuff
   pod 'Firebase'
+  pod 'Firebase/Database'
   target 'FoodStuffTests' do
     inherit! :search_paths
     # Pods for testing
