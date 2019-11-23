@@ -25,16 +25,15 @@ class ChickenViewController: UIViewController {
         foodNameLabel.text = item.name
         recommendationsLabel.text = item.storageInfo
         
-        #warning("make sure the if else is correct")
         let timeToExpire = round((item.expiryDate.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24)
-        if timeToExpire == 0 {
+        if timeToExpire <= 0 {
             timeToExpiryLabel.text = "EXPIRED"
             self.view.backgroundColor = .systemRed
         } else if timeToExpire <= 7 {
-            timeToExpiryLabel.text = "\(timeToExpire) days to expiry"
+            timeToExpiryLabel.text = "\(Int(timeToExpire)) days to expiry"
             self.view.backgroundColor = .systemYellow
         } else {
-            timeToExpiryLabel.text = "\(timeToExpire) days to expiry"
+            timeToExpiryLabel.text = "\(Int(timeToExpire)) days to expiry"
         }
         
         recommendationsLabel.text = Parser().getData()[item.name.lowercased()]?.storage

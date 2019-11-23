@@ -74,7 +74,7 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yrc-CQ-ZUx">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yrc-CQ-ZUx">
                                                             <rect key="frame" x="0.0" y="-50" width="160" height="160"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="yrc-CQ-ZUx" secondAttribute="height" id="8Cz-8E-SXr"/>

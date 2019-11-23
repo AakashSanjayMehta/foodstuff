@@ -13,6 +13,8 @@ class ManualViewController: UIViewController {
     @IBOutlet weak var inputNameField: UITextField!
     @IBOutlet weak var inputDateField: UITextField!
     
+    var onDismiss: (() -> Void)?
+    
     private var datePicker: UIDatePicker?
     var foodName: String = ""
     var expiryDate: Date = Date()
@@ -49,6 +51,7 @@ class ManualViewController: UIViewController {
         foodName = inputNameField.text!
         newFood = Food(name: foodName, expiryDate: expiryDate, storageInfo: "")
         items.append(newFood)
+        onDismiss?()
         print(items)
     }
 }
