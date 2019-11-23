@@ -33,6 +33,8 @@ class ChickenViewController: UIViewController {
         } else {
             timeToExpiryLabel.text = "\(timeToExpire) days to expiry"
         }
+        
+        recommendationsLabel.text = Parser().getData()[item.name.lowercased()]?.storage
     }
     
 

@@ -43,7 +43,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func createDummyData() {
-        let data = [Food(name: "sebas", expiryDate: Date(), storageInfo: "alive")]
+        let data = [Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive")]
         
         items += data
     }
@@ -51,6 +51,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - UI Customisation
     func customiseSearchBar() {
         
+    }
+    
+    
+    @IBAction func openVision(_ sender: Any) {
+        // @AAKASH
     }
     
     // MARK: - Collection View
