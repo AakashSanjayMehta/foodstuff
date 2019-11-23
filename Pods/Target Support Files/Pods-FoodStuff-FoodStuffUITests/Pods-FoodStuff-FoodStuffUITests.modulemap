@@ -1,0 +1,6 @@
+framework module Pods_FoodStuff_FoodStuffUITests {
+  umbrella header "Pods-FoodStuff-FoodStuffUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
