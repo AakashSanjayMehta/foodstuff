@@ -91,7 +91,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func createDummyData() {
-        let data = [Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive"), Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive"), Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive")]
+        var chickenDate: String!
+        var fishDate: String!
+        var iceCreamDate: String!
+        var bananaDate: String!
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        chickenDate = "25/11/2019"
+        fishDate = "25/11/2019"
+        iceCreamDate = "24/06/2020"
+        bananaDate = "29/11/2019"
+        
+        
+        let data = [Food(name: "Chicken", expiryDate: dateFormatter.date(from: chickenDate)!, storageInfo: ""), Food(name: "Fish", expiryDate: dateFormatter.date(from: fishDate)!, storageInfo: "alive"), Food(name: "Ice Cream", expiryDate: dateFormatter.date(from: iceCreamDate)!, storageInfo: "alive"),Food(name: "Banana", expiryDate: dateFormatter.date(from: bananaDate)!, storageInfo: "alive")]
         
         items += data
     }
