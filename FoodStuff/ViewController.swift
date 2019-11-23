@@ -19,7 +19,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var ref: DatabaseReference!
     var selectedItem: Food!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet var tappedScreen: UITapGestureRecognizer!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var collectionview: UICollectionView!
+    @IBOutlet weak var manuallyTypeView: UIView!
+    @IBOutlet weak var scanItemView: UIView!
     
     // Classification
     lazy var classificationRequest: VNCoreMLRequest = {
@@ -56,6 +61,24 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         createDummyData()
         customiseSearchBar()
+        
+        buttonsStackView.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        let originalX = UIScreen.main.bounds.width - 40
+        let originalY = UIScreen.main.bounds.height - buttonsStackView.frame.height - 20
+        buttonsStackView.transform = .init(translationX: originalX, y: originalY)
+        
+        buttonsStackView.layer.cornerRadius = 20
+        buttonsStackView.clipsToBounds = true
+        
+        tappedScreen.isEnabled = false
+        
+        manuallyTypeView.layer.cornerRadius = 20
+        manuallyTypeView.clipsToBounds = true
+        
+        scanItemView.layer.cornerRadius = 20
+        scanItemView.clipsToBounds = true
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,14 +87,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func createDummyData() {
-        let data = [Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive")]
+        let data = [Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive"), Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive"), Food(name: "Chicken", expiryDate: Date(), storageInfo: "alive")]
         
         items += data
     }
     
     // MARK: - UI Customisation
     func customiseSearchBar() {
+//        searchBar.setSearchTextColor(.white)
         
+        let placeholderAttributes = [NSAttributedString.Key.foregroundColor: UIColor.green]
+        let attributedPlaceholder: NSAttributedString = NSAttributedString(string: "Search", attributes: placeholderAttributes)
+        
+        let textFieldPlaceHolder = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldPlaceHolder?.attributedPlaceholder = attributedPlaceholder
     }
     
     
@@ -83,6 +112,23 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             return
         }
         self.presentPhotoPicker(sourceType: .camera)
+    }
+    
+    @IBAction func newItem(_ sender: Any) {
+        UIView.animate(withDuration: 0.5) {
+            self.buttonsStackView.transform = .identity
+            
+        }
+        tappedScreen.isEnabled = true
+    }
+    
+    @IBAction func dismissPopUp(_ sender: Any) {
+        UIView.animate(withDuration: 0.5) {
+            let originalX = UIScreen.main.bounds.width - 40
+            let originalY = UIScreen.main.bounds.height - self.buttonsStackView.frame.height - 20
+            self.buttonsStackView.transform = .init(translationX: originalX, y: originalY)
+        }
+        tappedScreen.isEnabled = false
     }
     
     // MARK: - Collection View
@@ -115,6 +161,13 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             cell.backgroundColorIndicatorView.backgroundColor = UIColor(red: 57/255, green: 62/255, blue: 76/255, alpha: 1)
             cell.daysToExpire.text = "\(timeToExpire) days to expiry"
         }
+        cell.featureImageView.image = UIImage(named: items[indexPath.row].name.lowercased()) ?? UIImage()
+        
+        cell.featureImageView.layer.shadowColor = UIColor.black.cgColor
+        cell.featureImageView.layer.shadowOpacity = 0.6
+        cell.featureImageView.layer.shadowOffset = CGSize(width: 0, height: 20)
+        cell.featureImageView.layer.shadowRadius = 10
+        
         return cell
     }
     
@@ -132,3 +185,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
 }
 
+extension UISearchBar {
+    public func setSearchTextColor(_ colour: UIColor) {
+        let clrChange = subviews.flatMap { $0.subviews }
+        guard let sc = (clrChange.filter { $0 is UITextField }).first as? UITextField else { return }
+        sc.textColor = colour
+    }
+}

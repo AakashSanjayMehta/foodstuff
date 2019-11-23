@@ -12,6 +12,7 @@ class ChickenViewController: UIViewController {
 
     var item: Food!
     
+    @IBOutlet weak var swipeIndicator: UIView!
     @IBOutlet weak var foodNameLabel: UILabel!
     @IBOutlet weak var foodImageView: UIImageView!
     @IBOutlet weak var timeToExpiryLabel: UILabel!
@@ -28,13 +29,26 @@ class ChickenViewController: UIViewController {
         let timeToExpire = Int(round(item.expiryDate.timeIntervalSinceNow / 60 / 60 / 24))
         if timeToExpire == 0 {
             timeToExpiryLabel.text = "EXPIRED"
+            self.view.backgroundColor = .systemRed
         } else if timeToExpire <= 7 {
             timeToExpiryLabel.text = "\(timeToExpire) days to expiry"
+            self.view.backgroundColor = .systemYellow
         } else {
             timeToExpiryLabel.text = "\(timeToExpire) days to expiry"
         }
         
         recommendationsLabel.text = Parser().getData()[item.name.lowercased()]?.storage
+        
+        foodImageView.image = UIImage(named: item.name.lowercased()) ?? UIImage()
+        
+        foodImageView.layer.shadowColor = UIColor.black.cgColor
+        foodImageView.layer.shadowOpacity = 0.6
+        foodImageView.layer.shadowOffset = CGSize(width: 0, height: 20)
+        foodImageView.layer.shadowRadius = 10
+        foodImageView.clipsToBounds = false
+        foodImageView.superview!.clipsToBounds = false
+        
+        swipeIndicator.layer.cornerRadius = 2
     }
     
 
