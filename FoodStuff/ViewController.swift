@@ -163,6 +163,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        items.sort { (foodOne, foodTwo) -> Bool in
+            foodOne.expiryDate < foodTwo.expiryDate
+        }
+        
         return items.count
     }
     
