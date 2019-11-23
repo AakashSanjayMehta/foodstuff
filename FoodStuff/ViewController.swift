@@ -60,7 +60,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             dateFormatter.dateFormat = "dd/MM/yyyy"
             date = dateFormatter.date(from: changeddatenum)!
             print("new date is \(date)")
+            
             self.collectionview.reloadData()
+            
         })
         
         createDummyData()
@@ -83,6 +85,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         scanItemView.layer.cornerRadius = 20
         scanItemView.clipsToBounds = true
         
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
+            DispatchQueue.main.async {
+                self.collectionview.reloadData()
+            }
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -181,6 +189,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if segue.identifier == "chicken" {
             let dest = segue.destination as! ChickenViewController
             dest.item = selectedItem
+        }
+        if let dest = segue.destination as? ManualViewController {
+            dest.onDismiss = {
+                self.collectionview.reloadData()
+            }
         }
     }
     

@@ -12,6 +12,8 @@ class ManualViewController: UIViewController {
 
     @IBOutlet weak var inputTextField: UITextField!
     
+    var onDismiss: (() -> Void)?
+    
     private var datePicker: UIDatePicker?
     var foodName: String = ""
     var expiryDate: Date = Date()
@@ -42,6 +44,7 @@ class ManualViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         newFood = Food(name: foodName, expiryDate: expiryDate, storageInfo: "")
+        onDismiss?()
     }
 }
 

@@ -27,7 +27,7 @@ class ChickenViewController: UIViewController {
         
         #warning("make sure the if else is correct")
         let timeToExpire = round((item.expiryDate.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24)
-        if timeToExpire == 0 {
+        if timeToExpire <= 0 {
             timeToExpiryLabel.text = "EXPIRED"
             self.view.backgroundColor = .systemRed
         } else if timeToExpire <= 7 {
