@@ -79,7 +79,7 @@ DEPENDENCIES:
   - Firebase/Database
 
 SPEC REPOS:
-  trunk:
+  https://github.com/CocoaPods/Specs.git:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuthInterop
