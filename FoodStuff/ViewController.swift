@@ -21,6 +21,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     var ref: DatabaseReference!
     var selectedItem: Food!
+    var path: Int!
     
     @IBOutlet weak var donationButtonView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -112,17 +113,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         var chickenDate: String!
         var fishDate: String!
         var iceCreamDate: String!
-        var bananaDate: String!
+        var appleDate: String!
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         chickenDate = "26/11/2019"
         fishDate = "27/11/2019"
-        iceCreamDate = "12/06/2020"
-        bananaDate = "30/11/2019"
+        iceCreamDate = "25/05/2020"
+        appleDate = "30/11/2019"
         
         
-        let data = [Food(name: "Chicken", expiryDate: dateFormatter.date(from: chickenDate)!, storageInfo: ""), Food(name: "Fish", expiryDate: dateFormatter.date(from: fishDate)!, storageInfo: "alive"), Food(name: "Ice Cream", expiryDate: dateFormatter.date(from: iceCreamDate)!, storageInfo: "alive"),Food(name: "Banana", expiryDate: dateFormatter.date(from: bananaDate)!, storageInfo: "alive")]
+        let data = [Food(name: "Chicken", expiryDate: dateFormatter.date(from: chickenDate)!, storageInfo: ""), Food(name: "Fish", expiryDate: dateFormatter.date(from: fishDate)!, storageInfo: "alive"), Food(name: "Ice Cream", expiryDate: dateFormatter.date(from: iceCreamDate)!, storageInfo: "alive"),Food(name: "Apple", expiryDate: dateFormatter.date(from: appleDate)!, storageInfo: "alive")]
         
         items += data
     }
@@ -170,9 +171,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         print(idVal)
         if (donateButton.titleLabel?.text == "Donate"){
             donateButton.setTitle("Confirm", for: .normal)
+            donateButton.tag = 1
         }else{
+            donateButton.tag = 0
             donateButton.setTitle("Donate", for: .normal)
-            
+            collectionview.reloadData()
             ref.child("1xwC_wbOXvUY594d8TQyMlLmqu4DYaR0UHrAkyaLzfq8").child("Sheet1").observeSingleEvent(of: .value, with: { (snapshot) in
                 let x = snapshot.value as! NSMutableDictionary
                 let y = itemsToDontate(id: self.idVal, item: "sad", quantity: 1, origin: "qwerty")
@@ -190,6 +193,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
               }) { (error) in
                 print(error.localizedDescription)
             }
+            
+            performSegue(withIdentifier: "donate a kidney", sender: nil)
         }
     }
     
@@ -197,8 +202,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     // MARK: - Collection View
     // Collection View Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedItem = items[indexPath.row]
-        performSegue(withIdentifier: "chicken", sender: nil)
+        if donateButton.tag == 0 {
+            selectedItem = items[indexPath.row]
+            path = indexPath.row
+            performSegue(withIdentifier: "chicken", sender: nil)
+        } else {
+            // Donate
+            let cell = collectionView.cellForItem(at: indexPath) as! FoodsCollectionViewCell
+            cell.backgroundColorIndicatorView.backgroundColor = .systemGreen
+        }
+        
     }
     
     // Collection View Data Source
@@ -249,6 +262,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if segue.identifier == "chicken" {
             let dest = segue.destination as! DetailsViewController
             dest.item = selectedItem
+            dest.value = path
+            dest.onDismiss = {
+                self.collectionview.reloadData()
+            }
         }
         if let dest = segue.destination as? ManualViewController {
             dest.onDismiss = {
