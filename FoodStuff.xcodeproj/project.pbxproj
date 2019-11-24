@@ -66,7 +66,7 @@
 		5E0B2C942389075A00ED4F81 /* Fruit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Fruit.mlmodel; sourceTree = "<group>"; };
 		5E996F392389307D003887ED /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5E996F3C2389340A003887ED /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
-		5EC3572F2388D78F00FD3CCB /* FoodStuff.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodStuff.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EC3572F2388D78F00FD3CCB /* Expire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EC357322388D78F00FD3CCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EC357342388D78F00FD3CCB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5EC357362388D78F00FD3CCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		5EC357302388D78F00FD3CCB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5EC3572F2388D78F00FD3CCB /* FoodStuff.app */,
+				5EC3572F2388D78F00FD3CCB /* Expire.app */,
 				5EC357482388D79000FD3CCB /* FoodStuffTests.xctest */,
 				5EC357532388D79000FD3CCB /* FoodStuffUITests.xctest */,
 			);
@@ -234,7 +234,7 @@
 			);
 			name = FoodStuff;
 			productName = FoodStuff;
-			productReference = 5EC3572F2388D78F00FD3CCB /* FoodStuff.app */;
+			productReference = 5EC3572F2388D78F00FD3CCB /* Expire.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5EC357472388D79000FD3CCB /* FoodStuffTests */ = {
@@ -652,9 +652,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-019.Lance.FoodStuff";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Expire;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -672,9 +672,9 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "-019.Lance.FoodStuff";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Expire;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
