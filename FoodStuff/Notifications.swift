@@ -71,6 +71,8 @@ class LocalNotificationManager
                 guard error == nil else { return }
                 
                 print("Notification scheduled! --- ID = \(notification.id)")
+                let generator = UIImpactFeedbackGenerator(style: .heavy)
+                generator.impactOccurred()
             }
         }
     }
