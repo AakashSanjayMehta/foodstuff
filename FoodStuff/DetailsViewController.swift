@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChickenViewController: UIViewController {
+class DetailsViewController: UIViewController {
 
     var item: Food!
     

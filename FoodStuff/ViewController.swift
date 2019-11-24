@@ -111,10 +111,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        chickenDate = "25/11/2019"
-        fishDate = "25/11/2019"
-        iceCreamDate = "24/06/2020"
-        bananaDate = "29/11/2019"
+        chickenDate = "26/11/2019"
+        fishDate = "26/11/2019"
+        iceCreamDate = "25/06/2020"
+        bananaDate = "30/11/2019"
         
         
         let data = [Food(name: "Chicken", expiryDate: dateFormatter.date(from: chickenDate)!, storageInfo: ""), Food(name: "Fish", expiryDate: dateFormatter.date(from: fishDate)!, storageInfo: "alive"), Food(name: "Ice Cream", expiryDate: dateFormatter.date(from: iceCreamDate)!, storageInfo: "alive"),Food(name: "Banana", expiryDate: dateFormatter.date(from: bananaDate)!, storageInfo: "alive")]
@@ -238,7 +238,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "chicken" {
-            let dest = segue.destination as! ChickenViewController
+            let dest = segue.destination as! DetailsViewController
             dest.item = selectedItem
         }
         if let dest = segue.destination as? ManualViewController {

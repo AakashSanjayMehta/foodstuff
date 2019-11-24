@@ -301,10 +301,10 @@ without a printed expiry date</string>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
-        <!--Chicken View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="UNM-NK-odu">
             <objects>
-                <viewController id="VTv-eI-ssf" customClass="ChickenViewController" customModule="FoodStuff" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VTv-eI-ssf" customClass="DetailsViewController" customModule="FoodStuff" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iPy-6W-3zz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

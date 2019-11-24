@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		256A7EED2389026F005A30ED /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256A7EEC2389026F005A30ED /* ManualViewController.swift */; };
+		25A4DBEC23899F5900347416 /* data.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 25A4DBEB23899F5900347416 /* data.tsv */; };
 		25EBB12C2388FCA8000AA427 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EBB12B2388FCA8000AA427 /* Food.swift */; };
 		32D4B5F62388FB45006FE823 /* Vision.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5F52388FB45006FE823 /* Vision.storyboard */; };
 		32D4B5F82388FB53006FE823 /* Manual.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5F72388FB53006FE823 /* Manual.storyboard */; };
 		32D4B5FA238907E0006FE823 /* FoodsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B5F9238907E0006FE823 /* FoodsCollectionViewCell.swift */; };
-		32D4B5FE238916D4006FE823 /* ChickenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B5FD238916D4006FE823 /* ChickenViewController.swift */; };
-		32D4B60023891AC4006FE823 /* data.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5FF23891AC4006FE823 /* data.tsv */; };
+		32D4B5FE238916D4006FE823 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B5FD238916D4006FE823 /* DetailsViewController.swift */; };
 		32D4B60223891B08006FE823 /* TSV Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B60123891B08006FE823 /* TSV Parser.swift */; };
 		32D995262389F70200208D25 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D995252389F70200208D25 /* Notifications.swift */; };
 		5E0B2C952389075A00ED4F81 /* Fruit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5E0B2C942389075A00ED4F81 /* Fruit.mlmodel */; };
@@ -52,13 +52,13 @@
 
 /* Begin PBXFileReference section */
 		256A7EEC2389026F005A30ED /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
+		25A4DBEB23899F5900347416 /* data.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.tsv; sourceTree = "<group>"; };
 		25EBB12B2388FCA8000AA427 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		269692C0B4D39DC6592FB3CA /* Pods-FoodStuff-FoodStuffUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuff-FoodStuffUITests.release.xcconfig"; path = "Target Support Files/Pods-FoodStuff-FoodStuffUITests/Pods-FoodStuff-FoodStuffUITests.release.xcconfig"; sourceTree = "<group>"; };
 		32D4B5F52388FB45006FE823 /* Vision.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Vision.storyboard; sourceTree = "<group>"; };
 		32D4B5F72388FB53006FE823 /* Manual.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Manual.storyboard; sourceTree = "<group>"; };
 		32D4B5F9238907E0006FE823 /* FoodsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodsCollectionViewCell.swift; sourceTree = "<group>"; };
-		32D4B5FD238916D4006FE823 /* ChickenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickenViewController.swift; sourceTree = "<group>"; };
-		32D4B5FF23891AC4006FE823 /* data.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.tsv; sourceTree = "<group>"; };
+		32D4B5FD238916D4006FE823 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		32D4B60123891B08006FE823 /* TSV Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TSV Parser.swift"; sourceTree = "<group>"; };
 		32D995252389F70200208D25 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4A582AD34F22F8C5C2F72F85 /* Pods-FoodStuff-FoodStuffUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuff-FoodStuffUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodStuff-FoodStuffUITests/Pods-FoodStuff-FoodStuffUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -172,16 +172,16 @@
 				5EC357362388D78F00FD3CCB /* ViewController.swift */,
 				32D995252389F70200208D25 /* Notifications.swift */,
 				5EC357382388D78F00FD3CCB /* Main.storyboard */,
-				32D4B5FD238916D4006FE823 /* ChickenViewController.swift */,
+				32D4B5FD238916D4006FE823 /* DetailsViewController.swift */,
 				32D4B5F9238907E0006FE823 /* FoodsCollectionViewCell.swift */,
 				32D4B5F52388FB45006FE823 /* Vision.storyboard */,
 				32D4B5F72388FB53006FE823 /* Manual.storyboard */,
 				32D4B60123891B08006FE823 /* TSV Parser.swift */,
 				5EC3573E2388D79000FD3CCB /* Assets.xcassets */,
 				5EC357402388D79000FD3CCB /* LaunchScreen.storyboard */,
-				32D4B5FF23891AC4006FE823 /* data.tsv */,
 				5EC357432388D79000FD3CCB /* Info.plist */,
 				5E996F392389307D003887ED /* GoogleService-Info.plist */,
+				25A4DBEB23899F5900347416 /* data.tsv */,
 				5EC3573B2388D78F00FD3CCB /* FoodStuff.xcdatamodeld */,
 			);
 			path = FoodStuff;
@@ -324,9 +324,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				32D4B60023891AC4006FE823 /* data.tsv in Resources */,
 				5EC357422388D79000FD3CCB /* LaunchScreen.storyboard in Resources */,
 				5EC3573F2388D79000FD3CCB /* Assets.xcassets in Resources */,
+				25A4DBEC23899F5900347416 /* data.tsv in Resources */,
 				5EC3573A2388D78F00FD3CCB /* Main.storyboard in Resources */,
 				32D4B5F82388FB53006FE823 /* Manual.storyboard in Resources */,
 				32D4B5F62388FB45006FE823 /* Vision.storyboard in Resources */,
@@ -465,7 +465,7 @@
 				5EC3573D2388D78F00FD3CCB /* FoodStuff.xcdatamodeld in Sources */,
 				256A7EED2389026F005A30ED /* ManualViewController.swift in Sources */,
 				5E996F3D2389340A003887ED /* ImageClassificationViewController.swift in Sources */,
-				32D4B5FE238916D4006FE823 /* ChickenViewController.swift in Sources */,
+				32D4B5FE238916D4006FE823 /* DetailsViewController.swift in Sources */,
 				32D4B60223891B08006FE823 /* TSV Parser.swift in Sources */,
 				32D4B5FA238907E0006FE823 /* FoodsCollectionViewCell.swift in Sources */,
 				5EC357352388D78F00FD3CCB /* SceneDelegate.swift in Sources */,
