@@ -22,6 +22,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var ref: DatabaseReference!
     var selectedItem: Food!
     
+    @IBOutlet weak var donationButtonView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tappedScreen: UITapGestureRecognizer!
     @IBOutlet weak var buttonsStackView: UIStackView!
@@ -98,6 +99,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
                 self.notifManager.schedule()
             }
         })
+        
+        donationButtonView.layer.cornerRadius = 20
     }
     
     override func viewDidAppear(_ animated: Bool) {

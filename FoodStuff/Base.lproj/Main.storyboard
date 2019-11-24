@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
@@ -130,7 +130,10 @@
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eub-5u-uBS">
                                                 <rect key="frame" x="0.0" y="-4" width="288" height="74"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Donate"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                                <state key="normal" title="Donate">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="donateItems:" destination="BYZ-38-t0r" eventType="touchUpInside" id="o3x-Hp-u5O"/>
                                                 </connections>
@@ -275,6 +278,7 @@ without a printed expiry date</string>
                     <connections>
                         <outlet property="buttonsStackView" destination="FCa-fO-EP5" id="Ti6-yC-QvS"/>
                         <outlet property="collectionview" destination="2Ck-S7-K96" id="H48-sa-mKh"/>
+                        <outlet property="donationButtonView" destination="rea-J7-IBb" id="ajS-ug-AyG"/>
                         <outlet property="manuallyTypeView" destination="Q9W-f4-bSf" id="nZC-bN-G9H"/>
                         <outlet property="scanItemView" destination="9ws-NH-zQc" id="t20-ys-jiR"/>
                         <outlet property="searchBar" destination="GNk-O1-6n9" id="oyL-sy-oTB"/>
