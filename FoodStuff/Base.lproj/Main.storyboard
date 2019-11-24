@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,8 +29,8 @@
                                 <color key="barTintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Stash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RK-9M-72D">
-                                <rect key="frame" x="20" y="108" width="130" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Pantry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9RK-9M-72D">
+                                <rect key="frame" x="20" y="108" width="141" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -326,7 +326,7 @@ without a printed expiry date</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xM2-wk-gGo">
-                                <rect key="frame" x="20" y="459" width="214.5" height="62.5"/>
+                                <rect key="frame" x="20" y="452.5" width="214.5" height="62.5"/>
                                 <string key="text">Storage  
 Recommendation</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
@@ -334,13 +334,13 @@ Recommendation</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7 days to expiry" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-R9-rgl">
-                                <rect key="frame" x="20" y="368.5" width="374" height="20.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <rect key="frame" x="20" y="368.5" width="374" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcc-YA-6Gh">
-                                <rect key="frame" x="20" y="529.5" width="374" height="18"/>
+                                <rect key="frame" x="20" y="523" width="374" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -360,7 +360,7 @@ Recommendation</string>
                             <constraint firstItem="bB9-R9-rgl" firstAttribute="leading" secondItem="TkQ-te-4xd" secondAttribute="leading" constant="20" id="4zg-0n-9o0"/>
                             <constraint firstItem="Xi1-v2-Dpf" firstAttribute="leading" secondItem="TkQ-te-4xd" secondAttribute="leading" constant="20" id="6MC-Zk-8nT"/>
                             <constraint firstItem="TkQ-te-4xd" firstAttribute="trailing" secondItem="bB9-R9-rgl" secondAttribute="trailing" constant="20" id="K9m-CI-P9X"/>
-                            <constraint firstItem="xM2-wk-gGo" firstAttribute="top" secondItem="bB9-R9-rgl" secondAttribute="bottom" constant="70" id="Lda-vm-w2Q"/>
+                            <constraint firstItem="xM2-wk-gGo" firstAttribute="top" secondItem="bB9-R9-rgl" secondAttribute="bottom" constant="60" id="Lda-vm-w2Q"/>
                             <constraint firstItem="Xi1-v2-Dpf" firstAttribute="top" secondItem="TkQ-te-4xd" secondAttribute="top" constant="60" id="OSt-kC-H0R"/>
                             <constraint firstItem="BGb-QK-Hmv" firstAttribute="centerX" secondItem="iPy-6W-3zz" secondAttribute="centerX" id="Png-2U-Cdj"/>
                             <constraint firstItem="BGb-QK-Hmv" firstAttribute="width" secondItem="iPy-6W-3zz" secondAttribute="width" multiplier="0.4" id="SUh-HQ-Oo4"/>

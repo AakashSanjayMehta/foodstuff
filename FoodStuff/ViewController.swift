@@ -11,6 +11,8 @@ import FirebaseDatabase
 import CoreML
 import ImageIO
 import Vision
+import Foundation
+
 
 var items: [Food] = []
 var date = Date()
@@ -115,8 +117,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         chickenDate = "26/11/2019"
-        fishDate = "26/11/2019"
-        iceCreamDate = "25/06/2020"
+        fishDate = "27/11/2019"
+        iceCreamDate = "12/06/2020"
         bananaDate = "30/11/2019"
         
         
@@ -212,7 +214,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let expiry = items[indexPath.row].expiryDate
         
-        let timeToExpire = Int(round((expiry.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24))
+        let timeToExpire = Int(floor((expiry.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24))
         
         if timeToExpire <= 0 {
             cell.backgroundColorIndicatorView.backgroundColor = .systemRed

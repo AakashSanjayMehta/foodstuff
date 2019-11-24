@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class DetailsViewController: UIViewController {
 
@@ -25,7 +26,7 @@ class DetailsViewController: UIViewController {
         foodNameLabel.text = item.name
         recommendationsLabel.text = item.storageInfo
         
-        let timeToExpire = round((item.expiryDate.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24)
+        let timeToExpire = floor((item.expiryDate.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24)
         if timeToExpire <= 0 {
             timeToExpiryLabel.text = "EXPIRED"
             self.view.backgroundColor = .systemRed
@@ -35,6 +36,10 @@ class DetailsViewController: UIViewController {
         } else {
             timeToExpiryLabel.text = "\(Int(timeToExpire)) days to expiry"
         }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+
+        timeToExpiryLabel.text = "\(timeToExpiryLabel.text!)\n\(dateFormatter.string(from: item.expiryDate))"
         
         recommendationsLabel.text = Parser().getData()[item.name.lowercased()]?.storage
         
