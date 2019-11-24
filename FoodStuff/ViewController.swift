@@ -24,7 +24,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tappedScreen: UITapGestureRecognizer!
     @IBOutlet weak var buttonsStackView: UIStackView!
-    
+    @IBOutlet weak var donateButton: UIButton!
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var manuallyTypeView: UIView!
     @IBOutlet weak var scanItemView: UIView!
@@ -166,6 +166,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //this is not scalable at all this is you writing code in the middle of the night. pls change this in the morning
     @IBAction func donateItems(_ sender: Any) {
         print(idVal)
+        donateButton.titleLabel?.text = "Confirm Items"
         ref.child("1xwC_wbOXvUY594d8TQyMlLmqu4DYaR0UHrAkyaLzfq8").child("Sheet1").observeSingleEvent(of: .value, with: { (snapshot) in
             let x = snapshot.value as! NSMutableDictionary
             let y = itemsToDontate(id: self.idVal, item: "sad", quantity: 1, origin: "qwerty")
@@ -225,7 +226,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             cell.daysToExpire.text = "\(timeToExpire) days to expiry"
         }
         cell.featureImageView.image = UIImage(named: items[indexPath.row].name.lowercased()) ?? UIImage()
-        
         cell.featureImageView.layer.shadowColor = UIColor.black.cgColor
         cell.featureImageView.layer.shadowOpacity = 0.6
         cell.featureImageView.layer.shadowOffset = CGSize(width: 0, height: 20)
