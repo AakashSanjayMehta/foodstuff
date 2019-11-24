@@ -48,9 +48,12 @@ class ManualViewController: UIViewController {
         
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        foodName = inputNameField.text!
-        newFood = Food(name: foodName, expiryDate: expiryDate, storageInfo: "")
-        items.append(newFood)
+        
+        if inputNameField.text != "" {
+            foodName = inputNameField.text!
+            newFood = Food(name: foodName, expiryDate: expiryDate, storageInfo: "")
+            items.append(newFood)
+        }
         onDismiss?()
         print(items)
     }

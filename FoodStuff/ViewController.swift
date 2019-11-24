@@ -20,7 +20,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var ref: DatabaseReference!
     var selectedItem: Food!
     
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tappedScreen: UITapGestureRecognizer!
     @IBOutlet weak var buttonsStackView: UIStackView!
@@ -28,6 +27,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var manuallyTypeView: UIView!
     @IBOutlet weak var scanItemView: UIView!
+    
+    let notifManager = LocalNotificationManager()
     
     // Classification
     lazy var classificationRequest: VNCoreMLRequest = {
@@ -86,11 +87,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         scanItemView.layer.cornerRadius = 20
         scanItemView.clipsToBounds = true
         
-//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
-//            DispatchQueue.main.async {
-//                self.collectionview.reloadData()
-//            }
-//        }
+        ref.child("Notifications").observe(.value, with: { (snapshot) in
+            let data = snapshot.value as! NSDictionary
+            if data["Release"] as! Bool {
+                self.notifManager.notifications = [
+                    Notification(id: UUID().uuidString, title: data["Name"] as! String, body: data["Content"] as! String, datetime: DateComponents(calendar: Calendar.current, year: 2019, month: 11, day: 24, hour: (data["Hour"] as! Int), minute: (data["Minute"] as! Int), second: (data["Seconds"] as! Int)))
+                ]
+                self.notifManager.schedule()
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -163,6 +168,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        items.sort { (foodOne, foodTwo) -> Bool in
+            foodOne.expiryDate < foodTwo.expiryDate
+        }
+        
         return items.count
     }
     
