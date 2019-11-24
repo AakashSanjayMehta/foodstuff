@@ -11,6 +11,7 @@ import FirebaseDatabase
 import CoreML
 import ImageIO
 import Vision
+import Foundation
 
 var items: [Food] = []
 var date = Date()
@@ -20,7 +21,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     var ref: DatabaseReference!
     var selectedItem: Food!
     
-    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var tappedScreen: UITapGestureRecognizer!
     @IBOutlet weak var buttonsStackView: UIStackView!
@@ -28,6 +28,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var collectionview: UICollectionView!
     @IBOutlet weak var manuallyTypeView: UIView!
     @IBOutlet weak var scanItemView: UIView!
+    
+    let notifManager = LocalNotificationManager()
     
     // Classification
     lazy var classificationRequest: VNCoreMLRequest = {
@@ -86,11 +88,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         scanItemView.layer.cornerRadius = 20
         scanItemView.clipsToBounds = true
         
-//        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { (_) in
-//            DispatchQueue.main.async {
-//                self.collectionview.reloadData()
-//            }
-//        }
+        ref.child("Notifications").observe(.value, with: { (snapshot) in
+            let data = snapshot.value as! NSDictionary
+            if data["Release"] as! Bool {
+                self.notifManager.notifications = [
+                    Notification(id: UUID().uuidString, title: data["Name"] as! String, body: data["Content"] as! String, datetime: DateComponents(calendar: Calendar.current, year: 2019, month: 11, day: 24, hour: (data["Hour"] as! Int), minute: (data["Minute"] as! Int), second: (data["Seconds"] as! Int)))
+                ]
+                self.notifManager.schedule()
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -106,10 +112,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
-        chickenDate = "25/11/2019"
-        fishDate = "25/11/2019"
-        iceCreamDate = "24/06/2020"
-        bananaDate = "29/11/2019"
+        chickenDate = "26/11/2019"
+        fishDate = "27/11/2019"
+        iceCreamDate = "12/06/2020"
+        bananaDate = "30/11/2019"
         
         
         let data = [Food(name: "Chicken", expiryDate: dateFormatter.date(from: chickenDate)!, storageInfo: ""), Food(name: "Fish", expiryDate: dateFormatter.date(from: fishDate)!, storageInfo: "alive"), Food(name: "Ice Cream", expiryDate: dateFormatter.date(from: iceCreamDate)!, storageInfo: "alive"),Food(name: "Banana", expiryDate: dateFormatter.date(from: bananaDate)!, storageInfo: "alive")]
@@ -163,6 +169,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // Collection View Data Source
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        items.sort { (foodOne, foodTwo) -> Bool in
+            foodOne.expiryDate < foodTwo.expiryDate
+        }
+        
         return items.count
     }
     
@@ -175,7 +185,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         let expiry = items[indexPath.row].expiryDate
         
-        let timeToExpire = Int(round((expiry.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24))
+        let timeToExpire = Int(floor((expiry.timeIntervalSinceReferenceDate - date.timeIntervalSinceReferenceDate)/60/60/24))
         
         if timeToExpire <= 0 {
             cell.backgroundColorIndicatorView.backgroundColor = .systemRed
@@ -204,7 +214,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         if segue.identifier == "chicken" {
-            let dest = segue.destination as! ChickenViewController
+            let dest = segue.destination as! DetailsViewController
             dest.item = selectedItem
         }
         if let dest = segue.destination as? ManualViewController {
