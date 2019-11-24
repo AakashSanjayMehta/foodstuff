@@ -178,14 +178,33 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             collectionview.reloadData()
             ref.child("1xwC_wbOXvUY594d8TQyMlLmqu4DYaR0UHrAkyaLzfq8").child("Sheet1").observeSingleEvent(of: .value, with: { (snapshot) in
                 let x = snapshot.value as! NSMutableDictionary
-                let y = itemsToDontate(id: self.idVal, item: "sad", quantity: 1, origin: "qwerty")
-                let z: NSDictionary = [
-                    "id":  y.id,
-                    "item": y.item,
-                    "quantity": y.quantity,
-                    "origin": y.origin
+                let y1 = itemsToDontate(id: 300, item: "Ice Cream", quantity: 1, origin: "Sebastian")
+                let y2 = itemsToDontate(id: 310, item: "Fish", quantity: 1, origin: "Sebastian")
+                let y3 = itemsToDontate(id: 320, item: "Chicken", quantity: 1, origin: "Sebastian")
+                
+                let z1: NSDictionary = [
+                    "id":  y1.id,
+                    "item": y1.item,
+                    "quantity": y1.quantity,
+                    "origin": y1.origin
                 ]
-                x[String(y.id)] = z
+                let z2: NSDictionary = [
+                    "id":  y2.id,
+                    "item": y2.item,
+                    "quantity": y2.quantity,
+                    "origin": y2.origin
+                ]
+                let z3: NSDictionary = [
+                    "id":  y3.id,
+                    "item": y3.item,
+                    "quantity": y3.quantity,
+                    "origin": y3.origin
+                ]
+                
+                x[String(y1.id)] = z1
+                x[String(y2.id)] = z2
+                x[String(y3.id)] = z3
+                
                 self.ref.child("1xwC_wbOXvUY594d8TQyMlLmqu4DYaR0UHrAkyaLzfq8").child("Sheet1").setValue(x)
                 print("new set")
                 print(x)
