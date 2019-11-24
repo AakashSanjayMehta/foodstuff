@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -278,6 +278,7 @@ without a printed expiry date</string>
                     <connections>
                         <outlet property="buttonsStackView" destination="FCa-fO-EP5" id="Ti6-yC-QvS"/>
                         <outlet property="collectionview" destination="2Ck-S7-K96" id="H48-sa-mKh"/>
+                        <outlet property="donateButton" destination="Eub-5u-uBS" id="3ym-fe-LKP"/>
                         <outlet property="donationButtonView" destination="rea-J7-IBb" id="ajS-ug-AyG"/>
                         <outlet property="manuallyTypeView" destination="Q9W-f4-bSf" id="nZC-bN-G9H"/>
                         <outlet property="scanItemView" destination="9ws-NH-zQc" id="t20-ys-jiR"/>
