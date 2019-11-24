@@ -15,6 +15,7 @@
 		32D4B5FE238916D4006FE823 /* ChickenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B5FD238916D4006FE823 /* ChickenViewController.swift */; };
 		32D4B60023891AC4006FE823 /* data.tsv in Resources */ = {isa = PBXBuildFile; fileRef = 32D4B5FF23891AC4006FE823 /* data.tsv */; };
 		32D4B60223891B08006FE823 /* TSV Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D4B60123891B08006FE823 /* TSV Parser.swift */; };
+		32D995262389F70200208D25 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D995252389F70200208D25 /* Notifications.swift */; };
 		5E0B2C952389075A00ED4F81 /* Fruit.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 5E0B2C942389075A00ED4F81 /* Fruit.mlmodel */; };
 		5E996F3A2389307D003887ED /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E996F392389307D003887ED /* GoogleService-Info.plist */; };
 		5E996F3D2389340A003887ED /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E996F3C2389340A003887ED /* ImageClassificationViewController.swift */; };
@@ -59,6 +60,7 @@
 		32D4B5FD238916D4006FE823 /* ChickenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickenViewController.swift; sourceTree = "<group>"; };
 		32D4B5FF23891AC4006FE823 /* data.tsv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.tsv; sourceTree = "<group>"; };
 		32D4B60123891B08006FE823 /* TSV Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TSV Parser.swift"; sourceTree = "<group>"; };
+		32D995252389F70200208D25 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		4A582AD34F22F8C5C2F72F85 /* Pods-FoodStuff-FoodStuffUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuff-FoodStuffUITests.debug.xcconfig"; path = "Target Support Files/Pods-FoodStuff-FoodStuffUITests/Pods-FoodStuff-FoodStuffUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		52D45F10C0C3F1D8E0919919 /* Pods-FoodStuffTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodStuffTests.release.xcconfig"; path = "Target Support Files/Pods-FoodStuffTests/Pods-FoodStuffTests.release.xcconfig"; sourceTree = "<group>"; };
 		5E0B2C942389075A00ED4F81 /* Fruit.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Fruit.mlmodel; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				5EC357322388D78F00FD3CCB /* AppDelegate.swift */,
 				5EC357342388D78F00FD3CCB /* SceneDelegate.swift */,
 				5EC357362388D78F00FD3CCB /* ViewController.swift */,
+				32D995252389F70200208D25 /* Notifications.swift */,
 				5EC357382388D78F00FD3CCB /* Main.storyboard */,
 				32D4B5FD238916D4006FE823 /* ChickenViewController.swift */,
 				32D4B5F9238907E0006FE823 /* FoodsCollectionViewCell.swift */,
@@ -455,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32D995262389F70200208D25 /* Notifications.swift in Sources */,
 				25EBB12C2388FCA8000AA427 /* Food.swift in Sources */,
 				5EC357372388D78F00FD3CCB /* ViewController.swift in Sources */,
 				5EC357332388D78F00FD3CCB /* AppDelegate.swift in Sources */,
