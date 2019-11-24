@@ -17,3 +17,9 @@ struct Food {
         return seconds
     }
 }
+struct itemsToDontate {
+    var id: Int
+    var item: String
+    var quantity: Int
+    var origin: Any
+}

@@ -158,6 +158,31 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
         tappedScreen.isEnabled = false
     }
+    var idVal = 26
+    
+    //this is not scalable at all this is you writing code in the middle of the night. pls change this in the morning
+    @IBAction func donateItems(_ sender: Any) {
+        print(idVal)
+        ref.child("1xwC_wbOXvUY594d8TQyMlLmqu4DYaR0UHrAkyaLzfq8").child("Sheet1").observeSingleEvent(of: .value, with: { (snapshot) in
+            let x = snapshot.value as! NSMutableDictionary
+            let y = itemsToDontate(id: self.idVal, item: "sad", quantity: 1, origin: "qwerty")
+            let z: NSDictionary = [
+                "id":  y.id,
+                "item": y.item,
+                "quantity": y.quantity,
+                "origin": y.origin
+            ]
+            x[String(y.id)] = z
+            self.ref.child("1xwC_wbOXvUY594d8TQyMlLmqu4DYaR0UHrAkyaLzfq8").child("Sheet1").setValue(x)
+            print("new set")
+            print(x)
+            self.idVal += 1
+          }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+    }
+    
     
     // MARK: - Collection View
     // Collection View Delegate
